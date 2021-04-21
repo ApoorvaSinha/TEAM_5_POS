@@ -6,10 +6,13 @@ import java.sql.SQLException;
 
 public class EstablishConnection {
 	
-	Connection con;
+	static Connection con;
 	
 	public EstablishConnection()
 	{
+		
+	}
+	public static Connection getConnection() {
 		try {
 			con=DriverManager.getConnection("jdbc:mysql://localhost:3306/pos_team5_schema", "root", "root");
 			System.out.println("DB Connected");
@@ -17,6 +20,7 @@ public class EstablishConnection {
 		catch (SQLException e) {
 			e.printStackTrace();
 		}
+		return con;
 	}
 	public static void main(String[] args) {
 		new EstablishConnection();
