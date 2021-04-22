@@ -1,7 +1,7 @@
 package com.pos.frames;
 
-import java.awt.BorderLayout;
 
+import java.awt.*;
 import javax.swing.*;
 
 public class FoodItems {
