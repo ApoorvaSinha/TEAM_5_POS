@@ -25,17 +25,17 @@ public class Order_Frame extends javax.swing.JFrame {
 	{   
 		frame=new JFrame("Order Details");  
 		Order_Dao od = new Order_Dao();
-		/*
-		 * String data[][]={
-		 * 
-		 * {"oid1001", "ab1001", "2018-09-01 09:01:15", "st1001",
-		 * "500","Active","ct1001","street1","city1","state1","987654","9876543218"},
-		 * {"oid1002", "ab1002", "2019-09-01 09:01:15", "st1002",
-		 * "400","Active","ct1003","street2","city2","state2","776567","6345272823"},
-		 * {"oid1003", "ab1003", "2020-09-01 09:01:15", "st1003",
-		 * "300","inActive","ct1002","street3","city3","state3","987654","2536327299"}
-		 * };
-		 */
+//		/*
+//		 * String data[][]={
+//		 * 
+//		 * {"oid1001", "ab1001", "2018-09-01 09:01:15", "st1001",
+//		 * "500","Active","ct1001","street1","city1","state1","987654","9876543218"},
+//		 * {"oid1002", "ab1002", "2019-09-01 09:01:15", "st1002",
+//		 * "400","Active","ct1003","street2","city2","state2","776567","6345272823"},
+//		 * {"oid1003", "ab1003", "2020-09-01 09:01:15", "st1003",
+//		 * "300","inActive","ct1002","street3","city3","state3","987654","2536327299"}
+//		 * };
+//		 */
 		String[][] data;
 		
 		

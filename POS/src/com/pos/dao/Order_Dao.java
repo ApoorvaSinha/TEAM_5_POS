@@ -9,24 +9,20 @@ import java.util.ArrayList;
 import com.pos.connection.EstablishConnection;
 import com.pos.model.Order;
 
-
 public class Order_Dao {
-	
-	Connection con; 
-	
-	public ArrayList<Order> getOrder() throws SQLException
-	{
-		con=EstablishConnection.getConnection();
-		PreparedStatement ps=null;
-		String sql="select * from pos_tbl_order"; //where orderId=?";
-		ps=con.prepareStatement(sql);
-		//ps.setString(1, orderId);
-		ResultSet rs=ps.executeQuery();
+
+	Connection con;
+
+	public ArrayList<Order> getOrder() throws SQLException {
+		con = EstablishConnection.getConnection();
+		PreparedStatement ps = null;
+		String sql = "select * from pos_tbl_order"; // where orderId=?";
+		ps = con.prepareStatement(sql);
+		// ps.setString(1, orderId);
+		ResultSet rs = ps.executeQuery();
 		ArrayList<Order> orderList = new ArrayList<Order>();
-		
-		
-		while(rs.next())
-		{
+
+		while (rs.next()) {
 			Order o = new Order();
 			o.setOrderId(rs.getString("orderId"));
 			o.setUserId(rs.getString("userid"));
@@ -44,7 +40,7 @@ public class Order_Dao {
 		}
 		return orderList;
 	}
-	
+
 	/*
 	 * public boolean addOrder(Order o) throws SQLException { con =
 	 * EstablishConnection.getConnection(); PreparedStatement ps = null; String sql
@@ -70,23 +66,20 @@ public class Order_Dao {
 	 * 
 	 * }
 	 */
-	
-	public boolean deleteOrder(String orderId) throws SQLException
-	{
+
+	public boolean deleteOrder(String orderId) throws SQLException {
 		con = EstablishConnection.getConnection();
 		PreparedStatement ps = null;
-		
+
 		String sql = "delete from pos_tbl_order where orderId = ?";
-		
+
 		ps = con.prepareStatement(sql);
 		ps.setString(1, orderId);
-		
-		if(ps.executeUpdate()>0)
+
+		if (ps.executeUpdate() > 0)
 			return true;
-		
+
 		return false;
 	}
-	
-	
-	
+
 }
