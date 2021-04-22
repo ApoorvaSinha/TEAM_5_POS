@@ -9,6 +9,9 @@ public class Food {
 	private int quantity;
 	private int Price;
 	
+	public Food()
+	{}
+	
 	public Food(String foodId, String name, String type, String foodSize,
 			int quantity, int price) {
 		super();
@@ -71,7 +74,7 @@ public class Food {
 	public String toString() {
 		return "Food [FoodId=" + FoodId + ", name=" + name + ", type=" + type
 				+ ", FoodSize=" + FoodSize + ", quantity=" + quantity
-				+ ", Price=" + Price + "]";
+				+ ", Price=" + Price + "]/n";
 	}
 	
 	

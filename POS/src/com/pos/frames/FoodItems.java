@@ -18,6 +18,7 @@ public class FoodItems {
 		    		{"Triple Cheese", "Non-Veg", "Medium", "400", "400"},    
 		    		{"Quadruple Cheese", "Veg", "Large", "600", "600"}
 	    		};    
+	    
 	    String column[]={"Name", "Type", "Size", "Qty", "Price"};
 	    
 	    JTable jt=new JTable(data,column);    
