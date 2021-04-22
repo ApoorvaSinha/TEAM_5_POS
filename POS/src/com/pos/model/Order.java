@@ -1,4 +1,5 @@
 package com.pos.model;
+
 import java.sql.Timestamp;
 
 public class Order {
@@ -15,7 +16,7 @@ public class Order {
 	private String state;
 	private String pincode;
 	private String mobileNo;
-	
+
 	public Order(String orderId, String userId, Timestamp orderDate,
 			String storeId, int totalPrice, String orderStatus, int cartId,
 			String street, String city, String state, String pincode,
@@ -34,6 +35,14 @@ public class Order {
 		this.pincode = pincode;
 		this.mobileNo = mobileNo;
 	}
+	
+	
+	
+	public Order() {
+		super();
+	}
+
+
 
 	public String getOrderId() {
 		return orderId;
@@ -131,15 +140,12 @@ public class Order {
 		this.mobileNo = mobileNo;
 	}
 
+	@Override
 	public String toString() {
-		return "Order [orderId=" + orderId + ", userId=" + userId
-				+ ", orderDate=" + orderDate + ", storeId=" + storeId
-				+ ", totalPrice=" + totalPrice + ", orderStatus=" + orderStatus
-				+ ", cartId=" + cartId + ", street=" + street + ", city="
-				+ city + ", state=" + state + ", pincode=" + pincode
-				+ ", mobileNo=" + mobileNo + "]";
+		return "Order [orderId=" + orderId + ", userId=" + userId + ", orderDate=" + orderDate + ", storeId=" + storeId
+				+ ", totalPrice=" + totalPrice + ", orderStatus=" + orderStatus + ", cartId=" + cartId + ", street="
+				+ street + ", city=" + city + ", state=" + state + ", pincode=" + pincode + ", mobileNo=" + mobileNo
+				+ "]";
 	}
-	
-	
-	
+
 }
