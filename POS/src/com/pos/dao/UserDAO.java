@@ -7,11 +7,12 @@ import java.sql.SQLException;
 
 import com.pos.connection.EstablishConnection;
 import com.pos.model.User;
+import com.pos.model.UserCredentials;
 
 public class UserDAO {
 Connection con;
 
-public User getData(String userid) throws SQLException
+public User getUser(String userid) throws SQLException
 {
 	con=EstablishConnection.getConnection();
 	PreparedStatement ps=null;
@@ -39,4 +40,66 @@ public User getData(String userid) throws SQLException
 	return null;
 }
 
+public boolean setUser(User user,UserCredentials cred) throws SQLException
+{
+	con=EstablishConnection.getConnection();
+	PreparedStatement ps=null;
+	
+	String sql="INSERT INTO user (`first_name`, `last_name`, `DOB`, `gender`, `street`, `location`, `city`, `state`, `zip_code`, `mobile_no`, `email_id`) VALUES ('?', '?', '?', '?', '?', '?', '?', '?', '?', '?', '?')";
+	ps=con.prepareStatement(sql);
+	ps.setString(1,user.getFirstName());
+	ps.setString(2,user.getLastName());
+	ps.setDate(3,user.getDob());
+	ps.setString(4,String.valueOf(user.getGender()));
+	ps.setString(5,user.getStreet());
+	ps.setString(6,user.getLocation());
+	ps.setString(7,user.getCity());
+	ps.setString(8,user.getState());
+	ps.setString(9,user.getZipcode());
+	ps.setString(10,user.getMobileNo());
+	ps.setString(11,user.getEmailId());
+	
+	if(ps.execute())
+		return true;
+	else return false;
+	
+	// after insertion get the id then insert into user crede.
+//	ResultSet rs=ps.executeQuery();
+//	User u=new User();
+//	return null;
 }
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ // food frame(admin) + dao ,anubhav 
+ // registration dao + frames , yogesh 
+ // order frame + dao, apoorva
+ // cart karthik
+ // customer dashboard Akshat 
+ // 
+
+
+
+
+
+
+
