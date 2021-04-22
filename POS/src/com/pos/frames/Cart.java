@@ -1,19 +1,38 @@
 package com.pos.frames;
 
 import java.awt.*;
+import java.util.ArrayList;
 
 import javax.swing.*;
 
 import javax.swing.JFrame;
 
+import com.pos.model.Food;
+
 public class Cart extends javax.swing.JFrame {
 
     public Cart() {
-        initComponents();
+       
     }
 
-    
-    @SuppressWarnings("unchecked")                         
+    String data[][];
+    int totalPrice=0;
+    public Cart(ArrayList<Food> arr) {
+		System.out.println(arr);
+		data=new String[arr.size()][4];
+		for(int i=0; i<arr.size(); i++)
+		{
+			data[i][0] = arr.get(i).getFoodId();
+			data[i][1] = arr.get(i).getName();
+			data[i][2] = arr.get(i).getFoodSize();
+			data[i][3] = String.valueOf(arr.get(i).getPrice());
+			totalPrice+=arr.get(i).getPrice();
+		}
+		 initComponents();
+	}
+
+
+	@SuppressWarnings("unchecked")                         
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
@@ -30,14 +49,9 @@ public class Cart extends javax.swing.JFrame {
         jLabel1.setText("CART");
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
+           data,
             new String [] {
-                "foodId", "type", "quantity", "cost"
+                "foodId", "name", "size", "cost"
             }
         ));
         jScrollPane1.setViewportView(jTable1);
@@ -46,9 +60,9 @@ public class Cart extends javax.swing.JFrame {
 
         jLabel2.setText("User ID");
 
-        jLabel3.setText("Total Price");
+        jLabel3.setText("Total Price :");
 
-        jLabel4.setText("Price");
+        jLabel4.setText("INR" +String.valueOf(totalPrice));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);

@@ -45,7 +45,14 @@ public class FoodItems {
 	    
 	    String column[]={"FoodId", "Name", "Type", "Size", "Qty", "Price"};
 	    
-	    JTable jt= new JTable(data, column);    
+	    
+	    JTable jt = new JTable(data, column) {
+	        private static final long serialVersionUID = 1L;
+
+	        public boolean isCellEditable(int row, int column) {                
+	                return false;               
+	        };
+	    };
 	    jt.setBounds(100,100,200,300); 
 	    
 	    

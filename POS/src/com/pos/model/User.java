@@ -1,6 +1,7 @@
 package com.pos.model;
 import java.sql.Date;
 public class User {
+
 	private String userId;
 	private String firstName;
 	private String lastName;
@@ -21,13 +22,6 @@ public class User {
 	}
 	
 	
-	
-	@Override
-	public String toString() {
-		return "User [userId=" + userId + ", firstName=" + firstName + ", lastName=" + lastName + ", dob=" + dob
-				+ ", gender=" + gender + ", street=" + street + ", location=" + location + ", city=" + city + ", state="
-				+ state + ", zipcode=" + zipcode + ", mobileNo=" + mobileNo + ", emailId=" + emailId + "]";
-	}
 
 
 
@@ -47,12 +41,63 @@ public class User {
 		this.mobileNo = mobileNo;
 		this.emailId = emailId;
 	}
+
+
+	public User( String firstName, String lastName, Date dob, char gender, String street, String location,
+			String city, String state, String zipcode, String mobileNo, String emailId) {
+		super();
+		
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.dob = dob;
+		this.gender = gender;
+		this.street = street;
+		this.location = location;
+		this.city = city;
+		this.state = state;
+		this.zipcode = zipcode;
+		this.mobileNo = mobileNo;
+		this.emailId = emailId;
+	}
+
+
+
+
 	public String getUserId() {
 		return userId;
 	}
+
+
+
+
+
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
+
+
+
+
+
+
+
+
+
+	
+	@Override
+	public String toString() {
+		return "User [userId=" + userId + ", firstName=" + firstName + ", lastName=" + lastName + ", dob=" + dob
+				+ ", gender=" + gender + ", street=" + street + ", location=" + location + ", city=" + city + ", state="
+				+ state + ", zipcode=" + zipcode + ", mobileNo=" + mobileNo + ", emailId=" + emailId + "]";
+	}
+
+
+
+
+
+
+
+
 	public String getFirstName() {
 		return firstName;
 	}
