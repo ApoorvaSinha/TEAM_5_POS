@@ -46,7 +46,7 @@ public class Order_Frame extends javax.swing.JFrame implements ActionListener {
 			ArrayList<Order> orderList = od.getOrder();
 		
 		
-		data = new String[orderList.size()][6];
+		data = new String[orderList.size()][10];
 		
 		for(int i=0; i<orderList.size(); i++)
 		{

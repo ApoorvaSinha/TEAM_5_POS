@@ -14,7 +14,7 @@ public class AdminDashboard implements ActionListener{
 	JFrame frame;
 	JPanel panel;
 
-	JButton manageFood, manageStore, viewOrders;
+	JButton manageFood, manageStore, viewOrders, logout;
 	public AdminDashboard(UserCredentials user) {
 		this.createDashboard();
 	}
@@ -44,16 +44,16 @@ public class AdminDashboard implements ActionListener{
 		
 		
 		manageFood = new JButton("Manage Products");
-	    manageFood.setBorder(BorderFactory.createEmptyBorder(50, 50, 50, 50));
 		manageFood.addActionListener(this);
 		
 		manageStore = new JButton("Manage Stores");
-		manageStore.setBorder(BorderFactory.createEmptyBorder(50, 50, 50, 50));
 		manageStore.addActionListener(this);
 		
 		viewOrders = new JButton("View Orders");
-		viewOrders.setBorder(BorderFactory.createEmptyBorder(50, 50, 50, 50));
 		viewOrders.addActionListener(this);
+		
+		logout = new JButton("Log Out");
+		logout.addActionListener(this);
 		
 		panel.add(empty);
 		panel.add(label_welcome);
@@ -67,9 +67,9 @@ public class AdminDashboard implements ActionListener{
 		panel.add(empty6);
 		panel.add(empty7);
 		panel.add(empty8);
-		panel.add(empty9);
 		panel.add(viewOrders);
-		panel.add(empty10);
+		panel.add(empty9);
+		panel.add(logout);
 		panel.add(empty11);
 		panel.add(empty12);
 		panel.add(empty13);
@@ -119,6 +119,11 @@ public AdminDashboard() {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+		}
+		else if(ae.getSource() == logout)
+		{
+			this.frame.dispose();
+			new Login();
 		}
 		
 	}
