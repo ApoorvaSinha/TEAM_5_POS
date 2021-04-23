@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import com.pos.connection.EstablishConnection;
 import com.pos.model.Order;
 
-public class Order_Dao {
+public class OrderDao {
 
 	Connection con;
 
@@ -41,31 +41,28 @@ public class Order_Dao {
 		return orderList;
 	}
 
-	/*
-	 * public boolean addOrder(Order o) throws SQLException { con =
-	 * EstablishConnection.getConnection(); PreparedStatement ps = null; String sql
-	 * =
-	 * "insert into pos_tbl_order(orderId,userid,orderDate,storeId,totalPrice,orderStatus,"
-	 * +
-	 * "cartid,street,city,state,pincode,mobileNo) values(?, ?, ?, ?, ?, ?,?,?,?,?,?,?);"
-	 * ;
-	 * 
-	 * ps = con.prepareStatement(sql);
-	 * 
-	 * ps.setString(1, o.getOrderId()); ps.setString(2, o.getUserId());
-	 * ps.setDate(3, o.getOrderDate()); ps.setString(4, o.getStoreId());
-	 * ps.setInt(5, o.getTotalPrice()); ps.setString(6, o.getOrderStatus());
-	 * ps.setInt(6, o.getCartId()); ps.setString(1, o.getStreet()); ps.setString(2,
-	 * o.getCity()); ps.setString(3, o.getState()); ps.setString(4, o.getPincode());
-	 * ps.setString(5, o.getMobileNo());
-	 * 
-	 * 
-	 * if(ps.executeUpdate()>0) return true;
-	 * 
-	 * return false;
-	 * 
-	 * }
-	 */
+	public boolean addOrder(Order order) throws SQLException {
+		con=EstablishConnection.getConnection();
+		String sql="INSERT INTO pos_tbl_order \n"
+				+ "(userid, orderDate, totalPrice,"
+				+ "orderStatus, street, city, state, pincode, mobileNo)"
+				+ " VALUES (?, ?,?,?, ?, ?,?, ?,?)";
+		PreparedStatement ps=con.prepareStatement(sql);
+		ps.setString(1, order.getUserId());
+		ps.setTimestamp(2, order.getOrderDate());
+		ps.setInt(3,order.getTotalPrice());
+		ps.setString(4, order.getOrderStatus());
+		ps.setString(5, order.getStreet());
+		ps.setString(6, order.getCity());
+		ps.setString(7, order.getState());
+		ps.setString(8, order.getPincode());
+		ps.setString(9, order.getMobileNo());
+			
+		if(ps.execute())	
+			return true;
+		
+		return false;
+	}
 
 	public boolean deleteOrder(String orderId) throws SQLException {
 		con = EstablishConnection.getConnection();

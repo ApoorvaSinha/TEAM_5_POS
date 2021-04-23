@@ -1,16 +1,18 @@
 package com.pos.frames;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.Container;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JDesktopPane;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JList;
@@ -23,13 +25,15 @@ import javax.swing.ListSelectionModel;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 
+import com.mysql.cj.x.protobuf.MysqlxCrud.Collection;
 import com.pos.dao.AdminDAO;
 import com.pos.model.Food;
+import com.pos.model.UserCredentials;
 
 public class TestFrame extends JFrame
 {
 	ArrayList<Food> arr=new ArrayList<>();
-	
+	Map<String,Food> map=new HashMap<>();
     private JLabel name = new JLabel("Customer Name:");
     private JLabel email = new JLabel("Email Address:");
     private JLabel telNo = new JLabel("Telephone No:");
@@ -37,6 +41,7 @@ public class TestFrame extends JFrame
     private JLabel crust = new JLabel("Pizza Name:");
     private JLabel size = new JLabel("Size:");
     private JLabel info = new JLabel("Pizza info:");
+    private JLabel quantiy = new JLabel("Quantity");
 
     private JTextField tName = new JTextField();
     private JTextField tEmail = new JTextField();
@@ -50,10 +55,14 @@ public class TestFrame extends JFrame
     private String[] pizzaName; //private String comboSize;
    // private double pizzaPrice;
     private String[] comboSize = {"Personal 6 inch", "Regular 9 inch", "Large 12 inch", "Extra large 15 inch"};
+    private String[] cQuantity= {"1","2","3","4","5"};
+    
     //private double[] pizzaPrice = {10.00, 20.00, 25.00, 30.00};
     private String[] foodId;
     private JComboBox cCrust;
     private JComboBox cSize = new JComboBox(comboSize);
+    private JComboBox cQu= new JComboBox(cQuantity);
+    
 
     private JRadioButton delivery = new JRadioButton("Delivery", true);
     private JRadioButton pickUp = new JRadioButton("Pick up", true);
@@ -70,6 +79,7 @@ public class TestFrame extends JFrame
     //int[] pizzaItem;
     String selected = "";
     int cost[];
+    UserCredentials cred;
     public void getData() throws SQLException {
 		AdminDAO ad = new AdminDAO();
 		
@@ -95,6 +105,7 @@ public class TestFrame extends JFrame
 		}
 		cCrust = new JComboBox(pizzaName);
     }
+    
     public TestFrame()
     {
     	try {
@@ -108,9 +119,10 @@ public class TestFrame extends JFrame
 
         Container pane = getContentPane();
         pane.setLayout(new GridLayout(2, 1, 5, 5));
+    
         JLabel lable=new JLabel("Customer Dashboard");
         p1.add(lable);
-        p1.setLayout(new GridLayout(4, 4));
+        p1.setLayout(new GridLayout(6,3));
 //        p1.add(name);
 //        p1.add(tName);
 //        p1.add(email);
@@ -124,7 +136,9 @@ public class TestFrame extends JFrame
         p1.add(cCrust);
         p1.add(size);
         p1.add(cSize);
-//        p1.add(delivery);
+        p1.add(quantiy);
+        p1.add(cQu);
+        //        p1.add(delivery);
 //        p1.add(pickUp);
         p1.add(submit);
         p1.add(clear);
@@ -148,7 +162,63 @@ public class TestFrame extends JFrame
         lPizza.addListSelectionListener(listener1);
     }
 
-        class action implements ActionListener
+        public TestFrame(UserCredentials cred) {
+        	this.cred=cred;
+        	try {
+    			this.getData();
+    		} catch (SQLException e) {
+    			// TODO Auto-generated catch block
+    			e.printStackTrace();
+    		}
+            lPizza.setVisibleRowCount(4);
+            lPizza.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+
+            Container pane = getContentPane();
+            pane.setLayout(new GridLayout(2, 1, 5, 5));
+        
+            JLabel lable=new JLabel("Customer Dashboard");
+            p1.add(lable);
+            p1.setLayout(new GridLayout(6,3));
+//            p1.add(name);
+//            p1.add(tName);
+//            p1.add(email);
+//            p1.add(tEmail);
+//            p1.add(telNo);
+//            p1.add(tTelNo);
+           // p1.add(pizza);
+           // p1.add(scrollPizza);
+            p1.add(new JLabel(""));
+            p1.add(crust);
+            p1.add(cCrust);
+            p1.add(size);
+            p1.add(cSize);
+            p1.add(quantiy);
+            p1.add(cQu);
+            //        p1.add(delivery);
+//            p1.add(pickUp);
+            p1.add(submit);
+            p1.add(clear);
+            p1.add(reviewOrder);
+
+            p2.setLayout(new BorderLayout());
+            p2.add(info, "West");
+            p2.add(aInfo, "Center");
+
+            pane.add(p1);
+            pane.add(p2);
+
+            action listener = new action();
+            delivery.addActionListener(listener);
+            pickUp.addActionListener(listener);
+            submit.addActionListener(listener);
+            clear.addActionListener(listener);
+            reviewOrder.addActionListener(listener);
+            
+            item listener1 = new item();
+            lPizza.addListSelectionListener(listener1);
+	}
+
+		class action implements ActionListener
         {
             public void actionPerformed(ActionEvent e)
             {
@@ -160,10 +230,11 @@ public class TestFrame extends JFrame
                     String item1 = tName.getText();
                     String item2 = tEmail.getText();
                     String item3 = tTelNo.getText();
-
+                    
+                    arr=new ArrayList<Food>();
                     int item4 = cCrust.getSelectedIndex();
                     int item5 = cSize.getSelectedIndex();
-                    
+                    int qu=cQu.getSelectedIndex();
                     
                         if (cSize.getSelectedItem().equals("Personal 6 inch"))
                         {
@@ -184,36 +255,68 @@ public class TestFrame extends JFrame
                     
                     
                     System.out.println(amount);
-                    
+                    temp.setQuantity(Integer.parseInt(cQuantity[qu]));
                     temp.setName(pizzaName[item4]);
                     temp.setPrice(cost[item4]);
-                    temp.setFoodSize(comboSize[item5] );
-                    temp.setPrice(temp.getPrice()+amount);
-                    temp.setQuantity(1);
                     temp.setFoodId(foodId[item4]);
-                    arr.add(temp);
+                    temp.setFoodSize(comboSize[item5] );
+                    temp.setPrice((temp.getPrice()+amount)*temp.getQuantity());
+                    String key=temp.getFoodId()+"."+temp.getFoodSize().substring(0,2);
+                    if(map.containsKey(key))
+                    {
+                    	if(map.get(key)
+                    			.getFoodSize().equals(temp.getFoodSize()))
+                    	{
+                    		Food t2=map.get(key);
+                    		t2.setQuantity(temp.getQuantity()+t2.getQuantity());
+                    		t2.setPrice(t2.getPrice()+temp.getPrice());
+                    		map.put(key,t2);
+                    	}
+                    	else {
+                    		map.put(key, temp);
+                    	}
+                    }
+                    else {
+                    	map.put(key, temp);
+                    }
+                    System.out.println(map);
+                    //arr.add(temp);
                     String str="";
                 	
+                    for (Food t3: map.values())
+                    {
+                    	arr.add(t3);
+                    }
+                   
+                    	
+                		
+                    
                     for(Food f:arr)
                     {
                     	System.out.println(f);
                     	str+= "\n" + item2 + "\n" + 
                                 item3 + "\n" + selected + "\n" + f.getName() + 
-                                "\n" + f.getFoodSize()+ "\nTotal price: INR " + 
+                                "\n" + f.getFoodSize()+ "\nQuantity: " + f.getQuantity()+ "\nTotal price: INR " +  
                                 String.valueOf(f.getPrice());
                     	
                     }
                     
                     aInfo.setText(str);
+                    arr=new ArrayList<Food>();
                 }
 
                 else if (choice == clear)
                 {
                     aInfo.setText("");
-                    arr=null;
+                    arr=new ArrayList<Food>();
+                    map=new HashMap<String,Food>();
                 }
                  if(choice == reviewOrder)
                 {
+                	   for (Food t3: map.values())
+                       {
+                       	arr.add(t3);
+                       }
                 	 System.out.println("This"+" "+this);
                 	 System.out.println("This Test"+" "+TestFrame.this);
                 	 
@@ -238,10 +341,11 @@ public class TestFrame extends JFrame
                          public void run() {
                         	 System.out.println("Bs");
                              
-                        	 new Cart(arr).setVisible(true);
+                        	 new Cart(arr,cred).setVisible(true);
                          }
                      });
                 }
+                 
             }
         }
 

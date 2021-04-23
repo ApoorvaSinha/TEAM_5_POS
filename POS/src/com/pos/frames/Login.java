@@ -65,7 +65,8 @@ public class Login implements ActionListener{
 		
 		 f.setSize(700,700);  
 		    f.setLayout(null);  
-		    f.setVisible(true);   
+		    f.setVisible(true);  
+		    f.setLocationRelativeTo(null);
 		
 	}
 	@Override
@@ -95,13 +96,14 @@ public class Login implements ActionListener{
 			{
 				
 				if(cred.getUserType()=='A') {
-					
+					this.f.dispose();
+					new AdminDashboard(credd);
 				}
 				else
 				{
 					this.f.dispose();
 					System.out.print("ASD");
-					TestFrame frame = new TestFrame();
+					TestFrame frame = new TestFrame(cred);
 					   frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 					   frame.setTitle("Order your pizza from PizzaLand. Satisfaction guaranteed!");
 					   frame.setSize(650, 650);

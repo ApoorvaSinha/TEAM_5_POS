@@ -15,7 +15,7 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
 import com.pos.dao.AdminDAO;
-import com.pos.dao.Order_Dao;
+import com.pos.dao.OrderDao;
 import com.pos.model.Food;
 import com.pos.model.Order;
 
@@ -28,7 +28,7 @@ public class Order_Frame extends javax.swing.JFrame implements ActionListener {
 	public void setOrder() throws SQLException
 	{   
 		frame=new JFrame("Order Details");  
-		Order_Dao od = new Order_Dao();
+		OrderDao od = new OrderDao();
 //		/*
 //		 * String data[][]={
 //		 * 
