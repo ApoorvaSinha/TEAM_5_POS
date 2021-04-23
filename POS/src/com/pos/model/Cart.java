@@ -13,6 +13,11 @@ public class Cart {
 	private int cost;
 	private Timestamp orderDate;
 	
+	public Cart()
+	{
+		
+	}
+	
 	public Cart(int cartId, String userId, String foodId, String type,
 			int quantity, int cost, Timestamp orderDate) {
 		super();
