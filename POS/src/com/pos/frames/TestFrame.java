@@ -70,6 +70,8 @@ public class TestFrame extends JFrame
     private JButton submit = new JButton("Add to cart");
     private JButton clear = new JButton("Clear");
     private JButton reviewOrder= new JButton("reviewOrder");
+    private JButton logout = new JButton("Log Out"); 					//////////////////////////////////////////////////
+        
     private JTextArea aInfo = new JTextArea(1, 2);
 
     private JPanel p1 = new JPanel();
@@ -121,6 +123,8 @@ public class TestFrame extends JFrame
         pane.setLayout(new GridLayout(2, 1, 5, 5));
     
         JLabel lable=new JLabel("Customer Dashboard");
+        
+        action listener = new action();
         p1.add(lable);
         p1.setLayout(new GridLayout(6,3));
 //        p1.add(name);
@@ -143,6 +147,10 @@ public class TestFrame extends JFrame
         p1.add(submit);
         p1.add(clear);
         p1.add(reviewOrder);
+        
+        logout.addActionListener(listener);			//////////////////////////////////
+        p1.add(logout);								///////////////////////////////////
+        
 
         p2.setLayout(new BorderLayout());
         p2.add(info, "West");
@@ -151,7 +159,7 @@ public class TestFrame extends JFrame
         pane.add(p1);
         pane.add(p2);
 
-        action listener = new action();
+        
         delivery.addActionListener(listener);
         pickUp.addActionListener(listener);
         submit.addActionListener(listener);
@@ -177,6 +185,9 @@ public class TestFrame extends JFrame
             pane.setLayout(new GridLayout(2, 1, 5, 5));
         
             JLabel lable=new JLabel("Customer Dashboard");
+            
+            action listener = new action();
+            
             p1.add(lable);
             p1.setLayout(new GridLayout(6,3));
 //            p1.add(name);
@@ -199,6 +210,11 @@ public class TestFrame extends JFrame
             p1.add(submit);
             p1.add(clear);
             p1.add(reviewOrder);
+            
+
+            logout.addActionListener(listener);			//////////////////////////////////
+            p1.add(logout);								///////////////////////////////////
+            
 
             p2.setLayout(new BorderLayout());
             p2.add(info, "West");
@@ -207,7 +223,7 @@ public class TestFrame extends JFrame
             pane.add(p1);
             pane.add(p2);
 
-            action listener = new action();
+            
             delivery.addActionListener(listener);
             pickUp.addActionListener(listener);
             submit.addActionListener(listener);
@@ -345,6 +361,11 @@ public class TestFrame extends JFrame
                          }
                      });
                 }
+                 else if(choice == logout)
+                 {
+                	TestFrame.this.dispose();
+                	new Login();
+                 }
                  
             }
         }
