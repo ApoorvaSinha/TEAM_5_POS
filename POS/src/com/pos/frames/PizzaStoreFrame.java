@@ -15,7 +15,7 @@ public class PizzaStoreFrame implements ActionListener{
 	
 	JFrame frame;
 	JPanel panel;
-	JButton addStore, deleteStore, updateStore,addPizzaStoreQuery,deleteStoreQuery,updateStoreQuery,updateStoreQueryFinal,backToDash;
+	JButton addStore, deleteStore, updateStore,addPizzaStoreQuery,deleteStoreQuery,updateStoreQuery,updateStoreQueryFinal,backToDash, backToMainFrame;
 	JTextField text_name,text_mobile, text_street, text_city, text_state, text_pin,text_id;
 	AdminDAO ad = new AdminDAO();
 		
@@ -67,12 +67,12 @@ public class PizzaStoreFrame implements ActionListener{
 	    addStore.addActionListener(this);
 	    frame.add(addStore);
 	    
-	    deleteStore = new JButton("Delete Food Item");
+	    deleteStore = new JButton("Delete Store");
 	    deleteStore.setBounds(400,700,200,40);
 	    deleteStore.addActionListener(this);
 	    frame.add(deleteStore);
 	    
-	    updateStore = new JButton("Update Food Item");
+	    updateStore = new JButton("Update Store");
 	    updateStore.setBounds(640,700,200,40);
 	    updateStore.addActionListener(this);
 	    frame.add(updateStore);
@@ -131,6 +131,9 @@ public class PizzaStoreFrame implements ActionListener{
 		updateStoreQueryFinal= new JButton("Update Details");
 		updateStoreQueryFinal.addActionListener(this);
 		
+		backToMainFrame = new JButton("Back");
+		backToMainFrame.addActionListener(this);
+		
 		JLabel emptyHeading2 = new JLabel("");
 		JLabel emptyHeading3 = new JLabel("");
 		JLabel emptyHeading4 = new JLabel("");
@@ -154,7 +157,7 @@ public class PizzaStoreFrame implements ActionListener{
 		panel.add(emptyHeading2);
 		panel.add(emptyHeading3);
 		panel.add(updateStoreQueryFinal);
-		panel.add(emptyHeading4);
+		panel.add(backToMainFrame);
 		
 		panel.setBorder(BorderFactory.createEmptyBorder(100, 50, 100, 50));
 		
@@ -180,6 +183,9 @@ public class PizzaStoreFrame implements ActionListener{
 		deleteStoreQuery = new JButton("Delete Store");
 		deleteStoreQuery.addActionListener(this);
 		
+		backToMainFrame = new JButton("Back");
+		backToMainFrame.addActionListener(this);
+		
 		JLabel emptyHeading3 = new JLabel("");
 		JLabel emptyHeading4= new JLabel("");
 		
@@ -192,6 +198,7 @@ public class PizzaStoreFrame implements ActionListener{
 		panel.add(emptyHeading3);
 		panel.add(emptyHeading4);
 		panel.add(deleteStoreQuery);
+		panel.add(backToMainFrame);
 		panel.setBorder(BorderFactory.createEmptyBorder(200, 100, 200, 100));
 		
 		frame.add(panel);
@@ -235,6 +242,9 @@ public class PizzaStoreFrame implements ActionListener{
 		addPizzaStoreQuery= new JButton("Add Store!");
 		addPizzaStoreQuery.addActionListener(this);
 		
+		backToMainFrame = new JButton("Back");
+		backToMainFrame.addActionListener(this);
+		
 		JLabel emptyHeading2 = new JLabel("");
 		JLabel emptyHeading3 = new JLabel("");
 		JLabel emptyHeading4 = new JLabel("");
@@ -256,7 +266,7 @@ public class PizzaStoreFrame implements ActionListener{
 		panel.add(emptyHeading2);
 		panel.add(emptyHeading3);
 		panel.add(addPizzaStoreQuery);
-		panel.add(emptyHeading4);
+		panel.add(backToMainFrame);
 		
 		panel.setBorder(BorderFactory.createEmptyBorder(100, 50, 100, 50));
 		
@@ -284,6 +294,9 @@ public class PizzaStoreFrame implements ActionListener{
 		updateStoreQuery = new JButton("Update Store");
 		updateStoreQuery.addActionListener(this);
 		
+		backToMainFrame = new JButton("Back");
+		backToMainFrame.addActionListener(this);
+		
 		JLabel emptyHeading3 = new JLabel("");
 		JLabel emptyHeading4= new JLabel("");
 		
@@ -296,6 +309,7 @@ public class PizzaStoreFrame implements ActionListener{
 		panel.add(emptyHeading3);
 		panel.add(emptyHeading4);
 		panel.add(updateStoreQuery);
+		panel.add(backToMainFrame);
 		panel.setBorder(BorderFactory.createEmptyBorder(200, 100, 200, 100));
 		
 		frame.add(panel);
@@ -392,6 +406,16 @@ public class PizzaStoreFrame implements ActionListener{
 		{
 			this.frame.dispose();
 			new AdminDashboard().createDashboard();
+		}
+		else if(ae.getSource() == backToMainFrame)
+		{
+			this.frame.dispose();
+			try {
+				new PizzaStoreFrame().setPizzaStore();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		
 	}

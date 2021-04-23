@@ -15,7 +15,7 @@ import com.pos.model.Food;
 public class FoodItems implements ActionListener {
 	JFrame frame;
 	JPanel panel;
-	JButton addFood, deleteFood, updateFood, addFoodQuery,deleteFoodQuery,updateFoodQuery, updateFoodQueryFinal, backToDash;
+	JButton addFood, deleteFood, updateFood, addFoodQuery,deleteFoodQuery,updateFoodQuery, updateFoodQueryFinal, backToDash, backToMainFrame;
 	JTextField text_name,text_type,text_size, text_qty, text_price,text_id;
 	AdminDAO ad = new AdminDAO();
 	
@@ -127,6 +127,9 @@ public class FoodItems implements ActionListener {
 		updateFoodQueryFinal = new JButton("Update Product!");
 		updateFoodQueryFinal.addActionListener(this);
 		
+		backToMainFrame = new JButton("Back");
+		backToMainFrame.addActionListener(this);
+		
 		JLabel emptyHeading2 = new JLabel("");
 		JLabel emptyHeading3 = new JLabel("");
 		JLabel emptyHeading4 = new JLabel("");
@@ -148,7 +151,7 @@ public class FoodItems implements ActionListener {
 		panel.add(emptyHeading2);
 		panel.add(emptyHeading3);
 		panel.add(updateFoodQueryFinal);
-		panel.add(emptyHeading4);
+		panel.add(backToMainFrame);
 		
 		panel.setBorder(BorderFactory.createEmptyBorder(100, 50, 100, 50));
 		
@@ -174,6 +177,9 @@ public class FoodItems implements ActionListener {
 		deleteFoodQuery = new JButton("Delete Product");
 		deleteFoodQuery.addActionListener(this);
 		
+		backToMainFrame = new JButton("Back");
+		backToMainFrame.addActionListener(this);
+		
 		JLabel emptyHeading3 = new JLabel("");
 		JLabel emptyHeading4= new JLabel("");
 		
@@ -186,6 +192,7 @@ public class FoodItems implements ActionListener {
 		panel.add(emptyHeading3);
 		panel.add(emptyHeading4);
 		panel.add(deleteFoodQuery);
+		panel.add(backToMainFrame);
 		panel.setBorder(BorderFactory.createEmptyBorder(200, 100, 200, 100));
 		
 		frame.add(panel);
@@ -225,6 +232,9 @@ public class FoodItems implements ActionListener {
 		addFoodQuery = new JButton("Add Product!");
 		addFoodQuery.addActionListener(this);
 		
+		backToMainFrame = new JButton("Back");
+		backToMainFrame.addActionListener(this);
+		
 		JLabel emptyHeading2 = new JLabel("");
 		JLabel emptyHeading3 = new JLabel("");
 		JLabel emptyHeading4 = new JLabel("");
@@ -244,7 +254,7 @@ public class FoodItems implements ActionListener {
 		panel.add(emptyHeading2);
 		panel.add(emptyHeading3);
 		panel.add(addFoodQuery);
-		panel.add(emptyHeading4);
+		panel.add(backToMainFrame);
 		
 		panel.setBorder(BorderFactory.createEmptyBorder(100, 50, 100, 50));
 		
@@ -272,6 +282,9 @@ public class FoodItems implements ActionListener {
 		updateFoodQuery = new JButton("Update Product");
 		updateFoodQuery.addActionListener(this);
 		
+		backToMainFrame = new JButton("Back");
+		backToMainFrame.addActionListener(this);
+		
 		JLabel emptyHeading3 = new JLabel("");
 		JLabel emptyHeading4= new JLabel("");
 		
@@ -284,6 +297,7 @@ public class FoodItems implements ActionListener {
 		panel.add(emptyHeading3);
 		panel.add(emptyHeading4);
 		panel.add(updateFoodQuery);
+		panel.add(backToMainFrame);
 		panel.setBorder(BorderFactory.createEmptyBorder(200, 100, 200, 100));
 		
 		frame.add(panel);
@@ -378,6 +392,16 @@ public class FoodItems implements ActionListener {
 		{
 			this.frame.dispose();
 			new AdminDashboard().createDashboard();
+		}
+		else if(ae.getSource() == backToMainFrame)
+		{
+			this.frame.dispose();
+			try {
+				new FoodItems().setFoodItems();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 		
 	}
