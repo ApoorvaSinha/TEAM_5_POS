@@ -74,7 +74,7 @@ public class Food {
 	public String toString() {
 		return "Food [FoodId=" + FoodId + ", name=" + name + ", type=" + type
 				+ ", FoodSize=" + FoodSize + ", quantity=" + quantity
-				+ ", Price=" + Price + "]/n";
+				+ ", Price=" + Price + "]\n";
 	}
 	
 	

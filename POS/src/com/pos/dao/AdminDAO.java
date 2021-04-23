@@ -93,6 +93,32 @@ public class AdminDAO {
 		return false;
 	}
 	
+	public Food getFoodbyID(String FoodId) throws SQLException
+	{
+		con = EstablishConnection.getConnection();
+		PreparedStatement ps = null;
+		String sql = "select * from pos_tbl_food where FoodId = ?;";
+		ps = con.prepareStatement(sql);
+		ps.setString(1, FoodId);
+		
+		ResultSet rs = null;
+		rs = ps.executeQuery();
+		Food f = new Food();
+		
+		if(rs.next())
+		{
+			f.setFoodId(FoodId);
+			f.setName(rs.getString("name"));
+			f.setType(rs.getString("type"));
+			f.setFoodSize(rs.getString("FoodSize"));
+			f.setQuantity(rs.getInt("Quantity"));
+			f.setPrice(rs.getInt("Price"));
+		}
+		else
+			f = null;
+		return f;
+	}
+	
 	//----------------------------------------------------------------------------------------------------------------------------------------------------------------
 	//----------------------------------------------------------------------------------------------------------------------------------------------------------------
 	
