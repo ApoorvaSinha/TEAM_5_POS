@@ -46,7 +46,9 @@ public class FoodItems implements ActionListener {
 	    JTable jt = new JTable(data, column) {
 	        private static final long serialVersionUID = 1L;
 
-	        public boolean isCellEditable(int row, int column) {                
+	        public boolean isCellEditable(int row, int column) { 
+//	        	if(column==1)
+//	        		return true;
 	                return false;               
 	        };
 	    };
