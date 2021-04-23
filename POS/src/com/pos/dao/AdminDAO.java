@@ -206,6 +206,32 @@ public class AdminDAO {
 			return true;
 		return false;
 	}
+	public PizzaStore getStorebyID(String storeId) throws SQLException
+	{
+		con = EstablishConnection.getConnection();
+		PreparedStatement ps = null;
+		String sql = "select * from POS_TBL_PizzaStore where storeId = ?;";
+		ps = con.prepareStatement(sql);
+		ps.setString(1, storeId);
+		
+		ResultSet rs = null;
+		rs = ps.executeQuery();
+		PizzaStore p = new PizzaStore();
+		
+		if(rs.next())
+		{
+			p.setStoreId(rs.getString("storeId"));
+			p.setName(rs.getString("name"));
+			p.setStreet(rs.getString("street"));
+			p.setMobileNo(rs.getString("mobileNo"));
+			p.setCity(rs.getString("city"));
+			p.setState(rs.getString("state"));
+			p.setPincode(rs.getString("pincode"));
+		}
+		else
+			p = null;
+		return p;
+	}
 	
 	
 	

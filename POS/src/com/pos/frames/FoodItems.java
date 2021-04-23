@@ -15,7 +15,7 @@ import com.pos.model.Food;
 public class FoodItems implements ActionListener {
 	JFrame frame;
 	JPanel panel;
-	JButton addFood, deleteFood, updateFood, addFoodQuery,deleteFoodQuery,updateFoodQuery, updateFoodQueryFinal;
+	JButton addFood, deleteFood, updateFood, addFoodQuery,deleteFoodQuery,updateFoodQuery, updateFoodQueryFinal, backToDash;
 	JTextField text_name,text_type,text_size, text_qty, text_price,text_id;
 	AdminDAO ad = new AdminDAO();
 	
@@ -75,6 +75,11 @@ public class FoodItems implements ActionListener {
 	    updateFood.setBounds(640,700,200,40);
 	    updateFood.addActionListener(this);
 	    frame.add(updateFood);
+	    
+	    backToDash = new JButton("Back");
+	    backToDash.setBounds(880,700,200,40);
+	    backToDash.addActionListener(this);
+	    frame.add(backToDash);
 	    
 	    
 	    frame.add(l); 
@@ -368,6 +373,11 @@ public class FoodItems implements ActionListener {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
+		}
+		else if(ae.getSource() == backToDash)
+		{
+			this.frame.dispose();
+			new AdminDashboard().createDashboard();
 		}
 		
 	}
