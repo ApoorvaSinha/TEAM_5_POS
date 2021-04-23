@@ -51,15 +51,9 @@ public class CreditCard_Frame extends javax.swing.JFrame {
         jLabel5.setText("Name           :");
 
         jLabel10.setIcon(new javax.swing.ImageIcon("C:\\Users\\apoorva\\Pictures\\HowtoPayChineseSuppliersbyBankTransferTT (1).jpg")); // NOI18N
+        jTextField1.setBounds(100,10,10,10);
+        
 
-        jTextField1.setBackground(new java.awt.Color(153, 255, 255));
-        jTextField1.setText("jTextField1");
-
-        jTextField2.setBackground(new java.awt.Color(153, 255, 255));
-        jTextField2.setText("jTextField2");
-
-        jTextField3.setBackground(new java.awt.Color(153, 255, 255));
-        jTextField3.setText("jTextField3");
 
         jButton1.setBackground(new java.awt.Color(153, 255, 255));
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N

@@ -1,16 +1,20 @@
 package com.pos.frames;
 
 import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.*;
 
 import javax.swing.JFrame;
 
+import com.pos.frames.TestFrame.action;
 import com.pos.model.Food;
+import com.pos.model.UserCredentials;
 
 public class Cart extends javax.swing.JFrame {
-
+	UserCredentials cred;
     public Cart() {
        
     }
@@ -19,13 +23,32 @@ public class Cart extends javax.swing.JFrame {
     int totalPrice=0;
     public Cart(ArrayList<Food> arr) {
 		System.out.println(arr);
-		data=new String[arr.size()][4];
+		data=new String[arr.size()][5];
 		for(int i=0; i<arr.size(); i++)
 		{
-			data[i][0] = arr.get(i).getFoodId();
+			data[i][0] = String.valueOf(i+1);
 			data[i][1] = arr.get(i).getName();
 			data[i][2] = arr.get(i).getFoodSize();
-			data[i][3] = String.valueOf(arr.get(i).getPrice());
+			data[i][4] = String.valueOf(arr.get(i).getPrice());
+			data[i][3] = String.valueOf(arr.get(i).getQuantity());
+			totalPrice+=arr.get(i).getPrice();
+		}
+		 initComponents();
+	}
+
+
+	public Cart(ArrayList<Food> arr, UserCredentials cred) {
+		this.cred=cred;
+		System.out.println(arr);
+		data=new String[arr.size()][5];
+		for(int i=0; i<arr.size(); i++)
+		{
+			
+			data[i][0] = String.valueOf(i+1);
+			data[i][1] = arr.get(i).getName();
+			data[i][2] = arr.get(i).getFoodSize();
+			data[i][4] = String.valueOf(arr.get(i).getPrice());
+			data[i][3] = String.valueOf(arr.get(i).getQuantity());
 			totalPrice+=arr.get(i).getPrice();
 		}
 		 initComponents();
@@ -51,9 +74,10 @@ public class Cart extends javax.swing.JFrame {
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
            data,
             new String [] {
-                "foodId", "name", "size", "cost"
+                "s.no", "name", "size","quantity", "cost",
             }
         ));
+        
         jScrollPane1.setViewportView(jTable1);
 
         button1.setLabel("Place Order");
@@ -63,7 +87,8 @@ public class Cart extends javax.swing.JFrame {
         jLabel3.setText("Total Price :");
 
         jLabel4.setText("INR" +String.valueOf(totalPrice));
-
+        action listener = new action();
+        button1.addActionListener(listener);
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -148,5 +173,32 @@ public class Cart extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
-    // End of variables declaration                   
-}
+    // End of variables declaration     
+    
+
+	class action implements ActionListener
+    {
+        public void actionPerformed(ActionEvent e)
+        {
+            Object choice = e.getSource();
+            //Object radioB = e.getSource();
+            Food temp=new Food();
+            if(choice == button1)
+            {
+            	Cart.this.dispose();
+            	new PaymentGateway(cred,totalPrice);
+            }
+            	//</editor-fold>
+
+                 /* Create and display the form */
+                 java.awt.EventQueue.invokeLater(new Runnable() {
+                     public void run() {
+                    	 System.out.println("Bs");
+                         
+                    	 
+                     }
+                 });
+            }
+        }
+    }
+

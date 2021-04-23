@@ -7,12 +7,16 @@ import java.sql.SQLException;
 
 import javax.swing.*;
 
+import com.pos.model.UserCredentials;
+
 public class AdminDashboard implements ActionListener{
 	
 	JFrame frame;
 	JPanel panel;
 	JButton manageFood, manageStore;
-	
+	public AdminDashboard(UserCredentials user) {
+		this.createDashboard();
+	}
 	public void createDashboard()
 	{
 		frame = new JFrame("Admin Dashboard");
@@ -52,11 +56,13 @@ public class AdminDashboard implements ActionListener{
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 	}
-
-	public static void main(String[] args) {
-		new AdminDashboard().createDashboard();
-
-	}
+public AdminDashboard() {
+	// TODO Auto-generated constructor stub
+}
+//	public static void main(String[] args) {
+//		new AdminDashboard().createDashboard();
+//
+//	}
 
 	@Override
 	public void actionPerformed(ActionEvent ae) {
