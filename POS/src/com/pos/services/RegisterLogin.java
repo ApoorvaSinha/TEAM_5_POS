@@ -5,7 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Statement;
 
-import com.pos.dbconnection.EstablishConnection;
+import com.pos.connection.EstablishConnection;
 import com.pos.model.User;
 import com.pos.model.UserCredentials;
 

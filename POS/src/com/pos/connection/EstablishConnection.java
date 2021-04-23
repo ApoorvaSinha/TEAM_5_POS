@@ -22,7 +22,7 @@ public class EstablishConnection {
 		}
 		return con;
 	}
-	public static void main(String[] args) {
-		new EstablishConnection();
-	}
+//	public static void main(String[] args) {
+//		new EstablishConnection();
+//	}
 }
