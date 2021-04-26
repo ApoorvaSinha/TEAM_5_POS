@@ -5,7 +5,8 @@ import com.pos.model.*;
 
 public interface DbWork {
 	
-	public boolean register(User user,UserCredentials cred) throws Exception;
+	public String register(User user,UserCredentials cred) throws Exception;
 	
 	public UserCredentials login(UserCredentials cred);
+	
 }

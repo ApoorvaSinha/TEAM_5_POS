@@ -10,6 +10,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
@@ -287,31 +288,25 @@ public class Register implements ActionListener{
 			User user=new User(fname,lname,da,gen,street,location,city,state,zip,mobile,email);
 			UserCredentials usercred=new UserCredentials(userT,password);
 			
-			
-			System.out.println(user);
-			System.out.println(usercred);
 			RegisterLogin r=new RegisterLogin();
-			boolean ans=false;
+			String userId=null;
 			try
 			{
 				
-			ans=r.register(user, usercred);
+			userId=r.register(user, usercred);
 			}
 			catch(Exception e2)
 			{
 				e2.printStackTrace();
 			}
 			
-			if(ans==false)
-			{
-				this.f.dispose();
-				new Register();
-			}
-			else
-			{
+			
+		
 			this.f.dispose();
+			JOptionPane.showMessageDialog(f,"Registered Successfully.Your id to login is:"+userId);  
 			new Login();
-			}
+		
 		}
 	}
 }
+			

@@ -4,6 +4,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
+
+//EstablishConnection class with getConnection method to connect with database
+
 public class EstablishConnection {
 	
 	static Connection con;

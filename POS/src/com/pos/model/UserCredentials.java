@@ -1,5 +1,7 @@
 package com.pos.model;
 
+//User Credential class with getters,setters, default and parameterized constructors, toString
+
 public class UserCredentials {
 
 

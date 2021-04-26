@@ -1,5 +1,6 @@
 package com.pos.model;
 
+//Food class with getters,setters, default and parameterized constructors, toString
 public class Food {
 
 	private String FoodId;

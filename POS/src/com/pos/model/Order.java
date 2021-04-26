@@ -1,5 +1,6 @@
 package com.pos.model;
 
+//Order class with getters,setters, default and parameterized constructors, toString
 import java.sql.Timestamp;
 
 public class Order {
