@@ -1,5 +1,6 @@
 package com.pos.model;
 
+//Credit card class with getters,setters, default and parameterized constructors, toString
 public class CreditCard {
 
 	private String CrediCardNumber;

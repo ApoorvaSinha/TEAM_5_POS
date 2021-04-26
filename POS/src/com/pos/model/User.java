@@ -1,5 +1,8 @@
 package com.pos.model;
 import java.sql.Date;
+
+//User class with getters,setters, default and parameterized constructors, toString
+
 public class User {
 
 	private String userId;

@@ -1,5 +1,6 @@
 package com.pos.model;
 
+//Pizza Store class with getters,setters, default and parameterized constructors, toString
 public class PizzaStore {
 	private String storeId;
 	private String name;

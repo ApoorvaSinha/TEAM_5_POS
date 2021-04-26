@@ -12,7 +12,7 @@ import com.pos.model.UserCredentials;
 public class RegisterLogin implements DbWork {
 
 	@Override
-	public boolean register(User user, UserCredentials cred) throws Exception {
+	public String register(User user, UserCredentials cred) throws Exception {
 		Connection con=EstablishConnection.getConnection();
 		
 	//	String sql="insert into user(first_name,last_name,DOB,gender,street,location,city,state,zip_code,mobile_no,email_id) values("+
@@ -56,7 +56,7 @@ public class RegisterLogin implements DbWork {
 		stmt=con.createStatement();
 		stmt.executeUpdate(sql1);
 		
-		return true;
+		return userId;
 		
 		
 		

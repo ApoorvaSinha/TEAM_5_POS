@@ -120,6 +120,7 @@ public class TestFrame extends JFrame
 			pizzaName[i]=foodList.get(i).getName();
 			cost[i]=foodList.get(i).getPrice();
 			foodId[i]=foodList.get(i).getFoodId();
+			// address 
 			data[i][3] = foodList.get(i).getFoodSize();
 			data[i][4] = String.valueOf(foodList.get(i).getQuantity());
 			data[i][5] = String.valueOf(foodList.get(i).getPrice());

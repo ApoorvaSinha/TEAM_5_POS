@@ -2,7 +2,7 @@ package com.pos.model;
 
 import java.sql.Timestamp;
 
-
+// Cart class with getters,setters, default and parameterized constructors, toString
 public class Cart {
 
 	private int cartId;
