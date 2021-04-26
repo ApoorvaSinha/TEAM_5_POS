@@ -121,7 +121,7 @@ public AdminDashboard() {
 		{
 			try {
 				this.frame.dispose();
-				new Order_Frame().setOrder();
+				new OrderFrame().setOrder();
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

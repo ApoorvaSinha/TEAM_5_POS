@@ -108,7 +108,7 @@ public class Login implements ActionListener{
 				{
 					this.f.dispose();
 					System.out.print("ASD");
-					TestFrame frame = new TestFrame(cred);
+					CustomerDashboard frame = new CustomerDashboard(cred);
 					   frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 					   frame.setTitle("Order your pizza from PizzaLand. Satisfaction guaranteed!");
 					   frame.setSize(650, 650);

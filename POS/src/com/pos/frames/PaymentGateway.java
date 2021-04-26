@@ -181,8 +181,8 @@ public class PaymentGateway implements ActionListener {
 				
 				JOptionPane.showMessageDialog(f,"Order Confirmed!!!....\n Will be delivered Soon..."); 
 				f.dispose();
-				new TestFrame(cred);
-				TestFrame frame = new TestFrame(cred);
+				new CustomerDashboard(cred);
+				CustomerDashboard frame = new CustomerDashboard(cred);
 				   frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 				   frame.setTitle("Order your pizza from PizzaLand. Satisfaction guaranteed!");
 				   frame.setSize(650, 650);

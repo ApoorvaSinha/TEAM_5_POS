@@ -27,7 +27,7 @@ import com.pos.dao.OrderDao;
 import com.pos.model.Food;
 import com.pos.model.Order;
 
-public class Order_Frame extends javax.swing.JFrame implements ActionListener {
+public class OrderFrame extends javax.swing.JFrame implements ActionListener {
 
 	JFrame frame;
 	JPanel panel;
@@ -104,7 +104,7 @@ public class Order_Frame extends javax.swing.JFrame implements ActionListener {
 	}
 
 	public static void main(String[] args) throws SQLException {
-		new Order_Frame().setOrder();
+		new OrderFrame().setOrder();
 	}
 
 	@Override

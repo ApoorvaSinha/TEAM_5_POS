@@ -48,7 +48,7 @@ import com.pos.dao.AdminDAO;
 import com.pos.model.Food;
 import com.pos.model.UserCredentials;
 
-public class TestFrame extends JFrame
+public class CustomerDashboard extends JFrame
 {
 	ArrayList<Food> arr=new ArrayList<>();
 	Map<String,Food> map=new HashMap<>();
@@ -128,7 +128,7 @@ public class TestFrame extends JFrame
 		cCrust = new JComboBox(pizzaName);
     }
     
-    public TestFrame()
+    public CustomerDashboard()
     {
     	try {
 			this.getData();
@@ -207,7 +207,7 @@ public class TestFrame extends JFrame
         lPizza.addListSelectionListener(listener1);
     }
 
-        public TestFrame(UserCredentials cred) {
+        public CustomerDashboard(UserCredentials cred) {
         	this.cred=cred;
         	try {
     			this.getData();
@@ -386,9 +386,9 @@ public class TestFrame extends JFrame
                        	arr.add(t3);
                        }
                 	 System.out.println("This"+" "+this);
-                	 System.out.println("This Test"+" "+TestFrame.this);
+                	 System.out.println("This Test"+" "+CustomerDashboard.this);
                 	 
-                	 TestFrame.this.dispose();
+                	 CustomerDashboard.this.dispose();
                 	 
                 	 try {
                 		 System.out.println("For");
@@ -415,7 +415,7 @@ public class TestFrame extends JFrame
                 }
                  else if(choice == logout)
                  {
-                	TestFrame.this.dispose();
+                	CustomerDashboard.this.dispose();
                 	new Login();
                  }
                  
@@ -440,7 +440,7 @@ public class TestFrame extends JFrame
 
 public static void main (String []args)
 {
-	TestFrame frame = new TestFrame();
+	CustomerDashboard frame = new CustomerDashboard();
    frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
    frame.setTitle("Order your pizza from PizzaLand. Satisfaction guaranteed!");
    frame.setSize(650, 650);

@@ -14,7 +14,7 @@ import javax.swing.*;
 
 import javax.swing.JFrame;
 
-import com.pos.frames.TestFrame.action;
+import com.pos.frames.CustomerDashboard.action;
 import com.pos.model.Food;
 import com.pos.model.UserCredentials;
 
