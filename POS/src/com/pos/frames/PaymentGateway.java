@@ -1,3 +1,8 @@
+/*
+ Frame to enter credit card details and complete payment
+ Functionality: - fields for name, card number, cvv
+*/
+
 package com.pos.frames;
 
 import java.awt.event.ActionEvent;

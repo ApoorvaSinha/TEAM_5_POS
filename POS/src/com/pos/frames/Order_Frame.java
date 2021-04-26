@@ -1,3 +1,10 @@
+/*
+ Frame to display order details
+ Functionality: - display all orders placed by customer
+ 				- back button feature to switch bak to admin dashboard
+ 				- accessible only to admin
+*/
+
 package com.pos.frames;
 
 import java.awt.BorderLayout;

@@ -1,3 +1,11 @@
+/*
+ Frame for all food products
+ Functionality: - display all food products with their complete detail
+ 				- add product
+ 				- update product
+ 				- delete product
+*/
+
 package com.pos.frames;
 
 

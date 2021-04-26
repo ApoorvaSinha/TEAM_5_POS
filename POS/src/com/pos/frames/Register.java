@@ -1,3 +1,8 @@
+/*
+ Frame for user registration
+ Functionality: - fields for name, dob, city, state, email, password, usertype
+*/
+
 package com.pos.frames;
 
 import java.awt.event.ActionEvent;

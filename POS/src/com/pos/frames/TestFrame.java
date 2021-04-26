@@ -1,3 +1,19 @@
+/*
+ Frame for Customer dashboard
+ Functionality: - user can place order
+ 				- select pizza and size of pizza
+ 					if size are same for same pizza:
+ 						add onto the exsisting item in cart
+ 						
+ 					else if size are not same for same pizza
+ 						create new item in cart
+ 				
+ 				- review order button to check the cart
+ 				- logout button for logout
+ 				- clear button to clear all selection
+ 					 
+*/
+
 package com.pos.frames;
 
 import java.awt.BorderLayout;
@@ -11,6 +27,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
@@ -39,6 +57,7 @@ public class TestFrame extends JFrame
     private JLabel telNo = new JLabel("Telephone No:");
     private JLabel pizza = new JLabel("Pizza Type:");
     private JLabel crust = new JLabel("Pizza Name:");
+    private JLabel image = new JLabel("");
     private JLabel size = new JLabel("Size:");
     private JLabel info = new JLabel("Pizza info:");
     private JLabel quantiy = new JLabel("Quantity");
@@ -126,8 +145,9 @@ public class TestFrame extends JFrame
         JLabel lable=new JLabel("Customer Dashboard");
         
         action listener = new action();
+        p1.add(new JLabel(""));
         p1.add(lable);
-        p1.setLayout(new GridLayout(6,3));
+        p1.setLayout(new GridLayout(7,3, 10,10));
 //        p1.add(name);
 //        p1.add(tName);
 //        p1.add(email);
@@ -136,18 +156,31 @@ public class TestFrame extends JFrame
 //        p1.add(tTelNo);
        // p1.add(pizza);
        // p1.add(scrollPizza);
+
+        
         p1.add(new JLabel(""));
         p1.add(crust);
+        
+        image.setIcon(new ImageIcon("pizza.png"));
+        
+        p1.add(image);
         p1.add(cCrust);
         p1.add(size);
+        p1.add(new JLabel(""));
         p1.add(cSize);
         p1.add(quantiy);
+        p1.add(new JLabel(""));
         p1.add(cQu);
-        //        p1.add(delivery);
+//        p1.add(delivery);
 //        p1.add(pickUp);
+        p1.add(new JLabel(""));
+        p1.add(new JLabel(""));
+        p1.add(new JLabel(""));
         p1.add(submit);
+        p1.add(new JLabel(""));
         p1.add(clear);
         p1.add(reviewOrder);
+        p1.add(new JLabel(""));
         
         logout.addActionListener(listener);			//////////////////////////////////
         p1.add(logout);								///////////////////////////////////
@@ -156,7 +189,10 @@ public class TestFrame extends JFrame
         p2.setLayout(new BorderLayout());
         p2.add(info, "West");
         p2.add(aInfo, "Center");
-
+        
+        p1.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 10));
+        p2.setBorder(BorderFactory.createEmptyBorder(10, 20, 20, 40));
+        
         pane.add(p1);
         pane.add(p2);
 
@@ -189,8 +225,9 @@ public class TestFrame extends JFrame
             
             action listener = new action();
             
+            p1.add(new JLabel(""));
             p1.add(lable);
-            p1.setLayout(new GridLayout(6,3));
+            p1.setLayout(new GridLayout(7,3, 10,10));
 //            p1.add(name);
 //            p1.add(tName);
 //            p1.add(email);
@@ -201,16 +238,27 @@ public class TestFrame extends JFrame
            // p1.add(scrollPizza);
             p1.add(new JLabel(""));
             p1.add(crust);
+            
+            image.setIcon(new ImageIcon("pizza.png"));
+            
+            p1.add(image);
             p1.add(cCrust);
             p1.add(size);
+            p1.add(new JLabel(""));
             p1.add(cSize);
             p1.add(quantiy);
+            p1.add(new JLabel(""));
             p1.add(cQu);
             //        p1.add(delivery);
 //            p1.add(pickUp);
+            p1.add(new JLabel(""));
+            p1.add(new JLabel(""));
+            p1.add(new JLabel(""));
             p1.add(submit);
+            p1.add(new JLabel(""));
             p1.add(clear);
             p1.add(reviewOrder);
+            p1.add(new JLabel(""));
             
 
             logout.addActionListener(listener);			//////////////////////////////////
@@ -220,6 +268,9 @@ public class TestFrame extends JFrame
             p2.setLayout(new BorderLayout());
             p2.add(info, "West");
             p2.add(aInfo, "Center");
+            
+            p1.setBorder(BorderFactory.createEmptyBorder(20, 20, 20, 10));
+            p2.setBorder(BorderFactory.createEmptyBorder(10, 20, 20, 40));
 
             pane.add(p1);
             pane.add(p2);

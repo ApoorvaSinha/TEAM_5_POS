@@ -1,3 +1,12 @@
+/*
+ Frame for all pizza stores
+ Functionality: - display all pizza stores with their complete detail
+ 				- add store
+ 				- update store
+ 				- delete store
+ 				- back to dashboard
+*/
+
 package com.pos.frames;
 
 import java.awt.*;
