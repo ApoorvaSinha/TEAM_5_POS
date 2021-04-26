@@ -1,3 +1,10 @@
+/*
+ Frame for ADMIN DASHBOARD
+ Functionality: - view orders placed
+ 				- manage pizza stores
+ 				- manage food items
+*/
+
 package com.pos.frames;
 
 import java.awt.GridLayout;

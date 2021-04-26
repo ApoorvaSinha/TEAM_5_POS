@@ -1,3 +1,8 @@
+/*
+ Frame for Cart
+ Functionality: - view all products placed in the cart
+*/
+
 package com.pos.frames;
 
 import java.awt.*;

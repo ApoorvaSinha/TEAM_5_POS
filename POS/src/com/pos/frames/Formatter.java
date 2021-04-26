@@ -1,3 +1,7 @@
+/*
+ Formatter class for formatting the date and retrieving it.
+*/
+
 package com.pos.frames;
 
 import java.text.ParseException;

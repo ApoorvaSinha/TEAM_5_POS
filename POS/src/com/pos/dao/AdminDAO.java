@@ -13,6 +13,7 @@ import com.pos.model.PizzaStore;
 public class AdminDAO {
 	Connection con;
 	
+	// Fetches all the records from Food table
 	public ArrayList<Food> getAllFoodItems() throws SQLException
 	{
 		con = EstablishConnection.getConnection();
@@ -37,6 +38,7 @@ public class AdminDAO {
 		return foodList;
 	}
 	
+	// insert into food table
 	public boolean addFoodItem(Food f) throws SQLException
 	{
 		con = EstablishConnection.getConnection();
@@ -57,6 +59,7 @@ public class AdminDAO {
 		
 	}
 	
+	// delete from food table
 	public boolean deleteFoodItem(String FoodId) throws SQLException
 	{
 		con = EstablishConnection.getConnection();
@@ -73,6 +76,7 @@ public class AdminDAO {
 		return false;
 	}
 	
+	//updates food table data based on foodID
 	public boolean updateFoodItem(Food f) throws SQLException
 	{
 		con = EstablishConnection.getConnection();
@@ -93,6 +97,7 @@ public class AdminDAO {
 		return false;
 	}
 	
+	// retrieves record based on FoodId
 	public Food getFoodbyID(String FoodId) throws SQLException
 	{
 		con = EstablishConnection.getConnection();
@@ -122,6 +127,8 @@ public class AdminDAO {
 	//----------------------------------------------------------------------------------------------------------------------------------------------------------------
 	//----------------------------------------------------------------------------------------------------------------------------------------------------------------
 	
+	
+	// Fetches all the records from PizzaStore table
 	public ArrayList<PizzaStore> getAllPizzaStore() throws SQLException
 	{
 		con = EstablishConnection.getConnection();
@@ -148,6 +155,8 @@ public class AdminDAO {
 		return storeList;
 	}
 	
+	
+	//Insert into PizzaStore table
 	public boolean addPizzaStore(PizzaStore p) throws SQLException
 	{
 		con = EstablishConnection.getConnection();
@@ -170,6 +179,7 @@ public class AdminDAO {
 		
 	}
 	
+	// delete from PizzaStore table
 	public boolean deletePizzaStore(String storeId) throws SQLException
 	{
 		con = EstablishConnection.getConnection();
@@ -186,6 +196,7 @@ public class AdminDAO {
 		return false;
 	}
 	
+	// updates a single record based on storeID of PizzaStore Table
 	public boolean updatePizzaStore(PizzaStore p) throws SQLException
 	{
 		con = EstablishConnection.getConnection();
@@ -206,6 +217,8 @@ public class AdminDAO {
 			return true;
 		return false;
 	}
+	
+	// retrieves a single record from Pizza Store table based on
 	public PizzaStore getStorebyID(String storeId) throws SQLException
 	{
 		con = EstablishConnection.getConnection();

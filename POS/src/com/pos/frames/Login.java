@@ -1,3 +1,8 @@
+/*
+ Frame for login
+ Functionality: - logs in the user, display pop up for incorrect login
+*/
+
 package com.pos.frames;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
