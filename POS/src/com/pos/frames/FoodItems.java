@@ -1,13 +1,23 @@
 package com.pos.frames;
 
 
-import java.awt.*;
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
-import javax.swing.*;
+import javax.swing.BorderFactory;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
+import javax.swing.JTextField;
 
 import com.pos.dao.AdminDAO;
 import com.pos.model.Food;
@@ -26,6 +36,12 @@ public class FoodItems implements ActionListener {
 		String[][] data;
 		
 		ArrayList<Food> foodList = ad.getAllFoodItems();
+		
+		/*
+		 * List<Food> arr=foodList.stream().sorted((f1,f2)->
+		 * Integer.parseInt(f2.getFoodId())-Integer.parseInt(f1.getFoodId())).
+		 * collect(Collectors.toList());
+		 */
 		
 		data = new String[foodList.size()][6];
 		

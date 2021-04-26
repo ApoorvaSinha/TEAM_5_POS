@@ -5,6 +5,8 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 import javax.swing.BorderFactory;
 import javax.swing.JButton;
@@ -14,7 +16,6 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 
-import com.pos.dao.AdminDAO;
 import com.pos.dao.OrderDao;
 import com.pos.model.Food;
 import com.pos.model.Order;
@@ -29,24 +30,24 @@ public class Order_Frame extends javax.swing.JFrame implements ActionListener {
 	{   
 		frame=new JFrame("Order Details");  
 		OrderDao od = new OrderDao();
-//		/*
-//		 * String data[][]={
-//		 * 
-//		 * {"oid1001", "ab1001", "2018-09-01 09:01:15", "st1001",
-//		 * "500","Active","ct1001","street1","city1","state1","987654","9876543218"},
-//		 * {"oid1002", "ab1002", "2019-09-01 09:01:15", "st1002",
-//		 * "400","Active","ct1003","street2","city2","state2","776567","6345272823"},
-//		 * {"oid1003", "ab1003", "2020-09-01 09:01:15", "st1003",
-//		 * "300","inActive","ct1002","street3","city3","state3","987654","2536327299"}
-//		 * };
-//		 */
+
 		String[][] data;
 		
 		
 			ArrayList<Order> orderList = od.getOrder();
-		
-		
+			
+			// use of Stream API
+			List<Order> arr=orderList.stream().sorted((f1,f2)->
+			 Integer.parseInt(f2.getOrderId())-Integer.parseInt(f1.getOrderId())).
+			  collect(Collectors.toList());
+			
+			System.out.println(arr);
+			
+			
+		orderList=(ArrayList<Order>) arr;
 		data = new String[orderList.size()][10];
+		
+		
 		
 		for(int i=0; i<orderList.size(); i++)
 		{
