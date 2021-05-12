@@ -10,6 +10,7 @@ import java.awt.event.ActionListener;
 import java.sql.Date;
 import java.text.SimpleDateFormat;
 import java.util.Properties;
+import java.util.regex.Pattern;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
@@ -248,6 +249,20 @@ public class Register implements ActionListener{
 		    f.setVisible(true);   
 		
 	}
+	
+	public static boolean isValid(String email)
+    {
+        String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."+
+                            "[a-zA-Z0-9_+&*-]+)*@" +
+                            "(?:[a-zA-Z0-9-]+\\.)+[a-z" +
+                            "A-Z]{2,7}$";
+                              
+        Pattern pat = Pattern.compile(emailRegex);
+        if (email == null)
+            return false;
+        return pat.matcher(email).matches();
+    }
+	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		if(e.getSource()==login)
@@ -281,36 +296,56 @@ public class Register implements ActionListener{
 			String dat=year+"-"+month+"-"+date;
 			 SimpleDateFormat formatter = new SimpleDateFormat("yyyy/mm/dd"); 
 			 Date da=null;
-		
-				 da=Date.valueOf(dat);
-			         
-			   
+			 da=Date.valueOf(dat);
 			
 			 System.out.println("Date is: "+da); 
-			
 			 
+			 if(fname.isEmpty() || lname.isEmpty() || street.isEmpty() || location.isEmpty() || city.isEmpty() || state.isEmpty()) {
+				 this.f.dispose();
+				JOptionPane.showMessageDialog(f,"Please enter all details");  
+				new Login();
+			 }
 			 
-			User user=new User(fname,lname,da,gen,street,location,city,state,zip,mobile,email);
-			UserCredentials usercred=new UserCredentials(userT,password);
-			
-			RegisterLogin r=new RegisterLogin();
-			String userId=null;
-			try
-			{
+			 else if(zip.length()!=6)
+			 {
+				this.f.dispose();
+				JOptionPane.showMessageDialog(f,"Invalid Zip code");  
+				new Login();
+			 }
+			 else if(mobile.length()!=10)
+			 {
+				this.f.dispose();
+				JOptionPane.showMessageDialog(f,"Invalid Mobile Number");  
+				new Login();
+			 }
+			 else if(!isValid(email))
+			 {
+				this.f.dispose();
+				JOptionPane.showMessageDialog(f,"Invalid email id");  
+				new Login();
+			 }
+			 else {
+					User user=new User(fname,lname,da,gen,street,location,city,state,zip,mobile,email);
+					UserCredentials usercred=new UserCredentials(userT,password);
+					
+					RegisterLogin r=new RegisterLogin();
+					String userId=null;
+					try
+					{
+						
+					userId=r.register(user, usercred);
+					}
+					catch(Exception e2)
+					{
+						e2.printStackTrace();
+					}
+					
+					
 				
-			userId=r.register(user, usercred);
-			}
-			catch(Exception e2)
-			{
-				e2.printStackTrace();
-			}
-			
-			
-		
-			this.f.dispose();
-			JOptionPane.showMessageDialog(f,"Registered Successfully.Your id to login is:"+userId);  
-			new Login();
-		
+					this.f.dispose();
+					JOptionPane.showMessageDialog(f,"Registered Successfully.Your id to login is:"+userId);  
+					new Login();
+			 }
 		}
 	}
 }

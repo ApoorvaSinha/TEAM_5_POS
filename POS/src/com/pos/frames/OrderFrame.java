@@ -61,10 +61,8 @@ public class OrderFrame extends javax.swing.JFrame implements ActionListener {
 			data[i][0] = orderList.get(i).getOrderId();
 			data[i][1] = orderList.get(i).getUserId();
 			data[i][2] = String.valueOf(orderList.get(i).getOrderDate());
-//			data[i][3] = orderList.get(i).getStoreId();
 			data[i][3] = String.valueOf(orderList.get(i).getTotalPrice());
 			data[i][4] =orderList.get(i).getOrderStatus();
-//			data[i][5] =String.valueOf(orderList.get(i).getCartId());
 			data[i][5] =orderList.get(i).getStreet();
 			data[i][6] =orderList.get(i).getCity();
 			data[i][7] =orderList.get(i).getState();

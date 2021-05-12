@@ -67,7 +67,7 @@ public class PizzaStoreFrame implements ActionListener{
 	    sp.setBorder(BorderFactory.createEmptyBorder(50, 50, 50, 50));
 	
 	
-	    JLabel l = new JLabel("Store ID");
+	    JLabel l = new JLabel("Pizza Stores");
 	    l.setBorder(BorderFactory.createEmptyBorder(10, 650, 10, 10));
 	    
 	    
@@ -347,21 +347,27 @@ public class PizzaStoreFrame implements ActionListener{
 		}
 		else if(ae.getSource() == addPizzaStoreQuery)
 		{
-			PizzaStore p = new PizzaStore();
-			
-			p.setName(text_name.getText());
-			p.setMobileNo(text_mobile.getText());
-			p.setStreet(text_street.getText());
-			p.setCity(text_city.getText());
-			p.setState(text_state.getText());
-			p.setPincode(text_pin.getText());
-			
 			try {
+				PizzaStore p = new PizzaStore();
+				if(text_name.getText().isEmpty() || text_mobile.getText().isEmpty()|| text_street.getText().isEmpty()|| text_city.getText().isEmpty()||text_state.getText().isEmpty()||text_pin.getText().isEmpty())
+					throw new Exception("Empty string");
+				
+				p.setName(text_name.getText());
+				p.setMobileNo(text_mobile.getText());
+				p.setStreet(text_street.getText());
+				p.setCity(text_city.getText());
+				p.setState(text_state.getText());
+				p.setPincode(text_pin.getText());
+			
 				ad.addPizzaStore(p);
 				this.frame.dispose();
 				new PizzaStoreFrame().setPizzaStore();
-			} catch (SQLException e) {
+			} 
+			catch (Exception e) {
 				// TODO Auto-generated catch block
+				this.frame.dispose();
+				new PizzaStoreFrame().addPizzaStore();
+				JOptionPane.showMessageDialog(frame,"Please enter valid details");
 				e.printStackTrace();
 			}
 		}
@@ -369,9 +375,15 @@ public class PizzaStoreFrame implements ActionListener{
 		{
 			String storeId = text_id.getText();
 			try {
-				ad.deletePizzaStore(storeId);
+				if(ad.deletePizzaStore(storeId)) {
 				this.frame.dispose();
 				new PizzaStoreFrame().setPizzaStore();
+				}
+				else {
+					this.frame.dispose();
+					new PizzaStoreFrame().deletePizzaStore();
+					JOptionPane.showMessageDialog(frame,"Id not available");
+				}
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -404,8 +416,12 @@ public class PizzaStoreFrame implements ActionListener{
 					this.frame.dispose();
 					new PizzaStoreFrame().updateStore(p);
 				}
-				else
-					throw new SQLException("ID not available");
+				else {
+//					throw new SQLException("ID not available");
+					this.frame.dispose();
+					new PizzaStoreFrame().searchForUpdate();
+					JOptionPane.showMessageDialog(frame,"Id not available");
+				}
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

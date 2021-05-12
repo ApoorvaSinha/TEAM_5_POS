@@ -22,6 +22,7 @@ import javax.swing.BorderFactory;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
@@ -352,19 +353,23 @@ public class FoodItems implements ActionListener {
 		}
 		else if(ae.getSource() == addFoodQuery)
 		{
-			Food f = new Food();
-			f.setName(text_name.getText());
-			f.setFoodSize(text_size.getText());
-			f.setPrice(Integer.parseInt(text_price.getText()));
-			f.setQuantity(Integer.parseInt(text_qty.getText()));
-			f.setType(text_type.getText());
-			
 			try {
+				Food f = new Food();
+				f.setName(text_name.getText());
+				f.setFoodSize(text_size.getText());
+				f.setPrice(Integer.parseInt(text_price.getText()));
+				f.setQuantity(Integer.parseInt(text_qty.getText()));
+				f.setType(text_type.getText());
+
 				ad.addFoodItem(f);
 				this.frame.dispose();
 				new FoodItems().setFoodItems();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
+			} 
+			catch (Exception e) {
+//				e.printStackTrace();
+				this.frame.dispose();
+				new FoodItems().addFoodItems();
+				JOptionPane.showMessageDialog(frame,"Please enter correct details.");
 				e.printStackTrace();
 			}
 		}
@@ -372,9 +377,15 @@ public class FoodItems implements ActionListener {
 		{
 			String foodId = text_id.getText();
 			try {
-				ad.deleteFoodItem(foodId);
+				if(ad.deleteFoodItem(foodId)) {
 				this.frame.dispose();
 				new FoodItems().setFoodItems();
+				}
+				else {
+					this.frame.dispose();
+					new FoodItems().deleteFoodItems();
+					JOptionPane.showMessageDialog(frame,"Id not available");
+				}
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -407,8 +418,12 @@ public class FoodItems implements ActionListener {
 					this.frame.dispose();
 					new FoodItems().updateFoodItems(f);
 				}
-				else
-					throw new SQLException("ID not available");
+				else {
+//					throw new SQLException("ID not available");
+					this.frame.dispose();
+					new FoodItems().searchForUpdate();
+					JOptionPane.showMessageDialog(frame,"Id not available");
+				}
 			} catch (SQLException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
